@@ -10,6 +10,7 @@ defmodule MiniKafka.Application do
     children = [
       # Starts a worker by calling: MiniKafka.Worker.start_link(arg)
       # {MiniKafka.Worker, arg}
+      MiniKafka.Log
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
