@@ -1,21 +1,45 @@
-# MiniKafka
+# Mini-Kafka
 
-**TODO: Add description**
+A small Kafka-inspired event log built from scratch with **Elixir and OTP**.
 
-## Installation
+The goal isn't to recreate Kafka, but to understand the core ideas behind event storage and consumption by building a simplified version ourselves.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mini_kafka` to your list of dependencies in `mix.exs`:
+## What it covers
 
-```elixir
-def deps do
-  [
-    {:mini_kafka, "~> 0.1.0"}
-  ]
-end
+* Append-only event log
+* Event offsets
+* Reading events from an offset
+* Event consumer
+* Consumer offsets
+* Persistent state recovery
+* OTP supervision and process recovery
+
+## Running
+
+```bash
+git clone <repo-url>
+cd mini_kafka
+mix deps.get
+mix run --no-halt
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/mini_kafka>.
+You can interact with the system through IEx:
 
+```bash
+iex -S mix
+```
+
+## Project Structure
+
+```text
+lib/
+└── mini_kafka/
+    ├── log.ex
+    └── consumer.ex
+```
+
+`MiniKafka.Log` manages the append-only event log, while `MiniKafka.Consumer` reads and processes events from the log.
+
+This project is intentionally simple and far from Kafka's full architecture. Concepts such as partitions, consumer groups, replication, leader selection, retention, and rebalancing are outside its scope.
+
+Built to explore **Kafka concepts through Elixir and OTP**.
